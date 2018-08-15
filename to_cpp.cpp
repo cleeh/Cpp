@@ -16,6 +16,13 @@ int computeRectArea(int width, int height){
 	return width * height;
 }
 
+namespace A{
+	void print() { std::cout << "A's print()" << std::endl;}
+}
+namespace B{
+	void print() { std::cout << "B's print()" << std::endl;}
+}
+
 int main(int argc, char* argv[]) {
 	int x = 10, y = 20;
 	std::cout << "x = " << x << ", y = " << y << std::endl << std::endl;
@@ -111,6 +118,10 @@ int main(int argc, char* argv[]) {
 	
 	std::cout << computeRectArea(5, 0, 10, 5) << std::endl;
 	std::cout << computeRectArea(5, 5) << std::endl << std::endl;
+	
+	A::print();
+	B::print();
+	std::cout << std::endl;
 	
 	return 0;
 }
