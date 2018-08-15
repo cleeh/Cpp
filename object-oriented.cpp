@@ -49,6 +49,21 @@ class Child : public Parent{
 	}
 };
 
+class Person{
+	private:
+	const string SSN;
+	double height;
+	double weight;
+	public:
+	Person() {}
+	Person(const string _SSN, double _height, double _weight):SSN(_SSN), height(_height), weight(_weight){
+		cout << "<Personal Information is made>" << endl;
+		cout << "SSN: " << SSN << endl;
+		cout << "height: " << height << endl;
+		cout << "weight: " << weight << endl;
+	}
+};
+
 int main(int argc, char* argv[]){
 	Elephant e ={4, 4.96, 1.02};
 	e.wash();
@@ -61,6 +76,8 @@ int main(int argc, char* argv[]){
 	Child c;
 	c.AccessParents();
 	cout << endl;
+	
+	Person person("103487-478263", 178.2, 73.8);
 	
 	return 0;
 }
