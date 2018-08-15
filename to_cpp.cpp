@@ -1,4 +1,8 @@
 #include <iostream>
+#include <typeinfo>
+
+void f(int a) { std::cout << "f(int)" << std::endl; }
+void f(int* a) { std::cout << "f(int*)" << std::endl; }
 
 int main(int argc, char* argv[]) {
 	int x = 10, y = 20;
@@ -26,7 +30,7 @@ int main(int argc, char* argv[]) {
 	std::cout << std::endl;
 	for(auto& i : arr)
 		std::cout << i << " ";
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 	
 	int** arr1 = new int*[5];
 	for(int i = 0; i < 5; i++)
@@ -42,4 +46,9 @@ int main(int argc, char* argv[]) {
 	int* p2 = new int[10];
 	delete[] p2; // delete int array type variable so, use 'delete[]'
 	p2 = nullptr;
+	
+	std::cout << "f(0): "; f(0);
+	std::cout << "f(nullptr):"; f(nullptr);
+	std::cout << sizeof(nullptr) << std::endl;
+	std::cout << typeid(nullptr).name() << std::endl;
 }
