@@ -50,5 +50,18 @@ int main(int argc, char* argv[]) {
 	std::cout << "f(0): "; f(0);
 	std::cout << "f(nullptr):"; f(nullptr);
 	std::cout << sizeof(nullptr) << std::endl;
-	std::cout << typeid(nullptr).name() << std::endl;
+	std::cout << typeid(nullptr).name() << std::endl << std::endl;
+	
+	/*
+	char* str = "Hello World!";
+	int* pi1 = (int*)str; // Runtime Error
+	char* pc1 = (char*)*pi1; // Runtime Error
+	std::cout << pc1 << std::endl;
+	
+	int* pi2 = static_cast<int*>(str); // Compile Error: static_cast can't convert from 'char*' to 'int*'
+	char* pc2 = static_cast<char*>(pi2); // Compile Error: static_cast can't convert from 'int*' to 'char*'
+	std::cout << pc2 << std::endl;
+	*/
+	
+	return 0;
 }
