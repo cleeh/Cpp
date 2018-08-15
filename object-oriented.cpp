@@ -54,6 +54,7 @@ class Person{
 	const string SSN;
 	double height;
 	double weight;
+	int* grade;
 	public:
 	Person() {}
 	Person(const string _SSN, double _height, double _weight):SSN(_SSN), height(_height), weight(_weight){
@@ -61,6 +62,18 @@ class Person{
 		cout << "SSN: " << SSN << endl;
 		cout << "height: " << height << endl;
 		cout << "weight: " << weight << endl;
+	}
+	~Person(){
+		delete[] grade;
+		grade = nullptr;
+		cout << "~Person() is called!" << endl;
+	}
+	void SetGrade(int _number){
+		grade = new int[_number];
+		for(int i = 0; i < _number; i++){
+			grade[i] = i;
+			cout << "grade[" << i << "]: " << grade[i] << endl;
+		}
 	}
 };
 
@@ -78,6 +91,7 @@ int main(int argc, char* argv[]){
 	cout << endl;
 	
 	Person person("103487-478263", 178.2, 73.8);
+	person.SetGrade(5);
 	
 	return 0;
 }
