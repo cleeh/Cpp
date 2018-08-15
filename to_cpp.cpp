@@ -5,6 +5,17 @@
 void f(int a) { std::cout << "f(int)" << std::endl; }
 void f(int* a) { std::cout << "f(int*)" << std::endl; }
 
+int computeRectArea(int x1, int y1, int x2, int y2){
+	int width = x1 - x2;
+	int height = y1 = y2;
+	int area = width * height;
+	if(area < 0) area = -area;
+	return area;
+}
+int computeRectArea(int width, int height){
+	return width * height;
+}
+
 int main(int argc, char* argv[]) {
 	int x = 10, y = 20;
 	std::cout << "x = " << x << ", y = " << y << std::endl << std::endl;
@@ -97,6 +108,9 @@ int main(int argc, char* argv[]) {
 	ref += 10;
 	std::cout << "refT = " << refT << std::endl;
 	std::cout << "ref = " << ref << std::endl << std::endl;
+	
+	std::cout << computeRectArea(5, 0, 10, 5) << std::endl;
+	std::cout << computeRectArea(5, 5) << std::endl << std::endl;
 	
 	return 0;
 }
