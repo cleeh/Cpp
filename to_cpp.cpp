@@ -92,5 +92,11 @@ int main(int argc, char* argv[]) {
 	std::cout << str1 << std::endl;
 	std::cout << str1.size() << ' ' << str2.length() << std::endl << std::endl;
 	
+	int refT = 10;
+	int& ref = refT;
+	ref += 10;
+	std::cout << "refT = " << refT << std::endl;
+	std::cout << "ref = " << ref << std::endl << std::endl;
+	
 	return 0;
 }
