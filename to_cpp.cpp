@@ -27,4 +27,19 @@ int main(int argc, char* argv[]) {
 	for(auto& i : arr)
 		std::cout << i << " ";
 	std::cout << std::endl;
+	
+	int** arr1 = new int*[5];
+	for(int i = 0; i < 5; i++)
+		arr1[i] = new int[5];
+	for(int i = 0; i < 5; i++)
+		delete[] arr1[i];
+	delete[] arr1;
+	arr1 = nullptr;
+	
+	int* p1 = new int;
+	delete p1; // just delete int type variable
+	p1 = nullptr;
+	int* p2 = new int[10];
+	delete[] p2; // delete int array type variable so, use 'delete[]'
+	p2 = nullptr;
 }
