@@ -63,5 +63,18 @@ int main(int argc, char* argv[]) {
 	std::cout << pc2 << std::endl;
 	*/
 	
+	enum class TrafficLight {Red, Yellow, Green};
+	enum class Job {Warrior, Ranger, Wizard, Green};
+	enum class Coffee : unsigned char {Latte=10, Mocha=25};
+	Job jobnum = Job::Warrior;
+	int i = static_cast<int>(TrafficLight::Green) + static_cast<int>(Coffee::Latte);
+	std::cout << i << std::endl;
+	/*
+	if(TrafficLight::Yellow == Job::Ranger) // Compile Error: No Match Enum Type
+		std::cout << "Same!" << std::endl;
+	else
+		std::cout << "Different!" << std::endl;
+	*/
+	
 	return 0;
 }
