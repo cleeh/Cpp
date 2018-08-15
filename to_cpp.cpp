@@ -1,5 +1,6 @@
 #include <iostream>
 #include <typeinfo>
+#include <string>
 
 void f(int a) { std::cout << "f(int)" << std::endl; }
 void f(int* a) { std::cout << "f(int*)" << std::endl; }
@@ -68,7 +69,7 @@ int main(int argc, char* argv[]) {
 	enum class Coffee : unsigned char {Latte=10, Mocha=25};
 	Job jobnum = Job::Warrior;
 	int i = static_cast<int>(TrafficLight::Green) + static_cast<int>(Coffee::Latte);
-	std::cout << i << std::endl;
+	std::cout << i << std::endl << std::endl;
 	/*
 	if(TrafficLight::Yellow == Job::Ranger) // Compile Error: No Match Enum Type
 		std::cout << "Same!" << std::endl;
@@ -82,6 +83,14 @@ int main(int argc, char* argv[]) {
 	int binary = 0b110100; // C++14
 	int maxInt_Cpp98 = 2147483647;
 	// int maxInt_Cpp14 = 21'4748'3647; // C++14
+	
+	std::string str1 = "Hello, World";
+	std::string str2 = "Hello, Word";
+	if(str1 == str2) std::cout << "Same!" << std::endl;
+	else std::cout << "Different!" << std::endl;
+	str1 = str1 + str2;
+	std::cout << str1 << std::endl;
+	std::cout << str1.size() << ' ' << str2.length() << std::endl << std::endl;
 	
 	return 0;
 }
