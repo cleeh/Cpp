@@ -75,6 +75,18 @@ class Person{
 			cout << "grade[" << i << "]: " << grade[i] << endl;
 		}
 	}
+	void SetHeight(double height){
+		this->height = height;
+	}
+	double GetHeight(){
+		return height;
+	}
+	void SetWeight(double weight){
+		this->weight = weight;
+	}
+	double GetWeight(){
+		return weight;
+	}
 };
 
 int main(int argc, char* argv[]){
@@ -92,6 +104,8 @@ int main(int argc, char* argv[]){
 	
 	Person person("103487-478263", 178.2, 73.8);
 	person.SetGrade(5);
+	person.SetHeight(170.2);
+	cout << "Result of SetHeight(170.2): " << person.GetHeight() << endl << endl;
 	
 	return 0;
 }
