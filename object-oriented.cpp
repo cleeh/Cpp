@@ -61,12 +61,19 @@ class Person{
 		cout << "<Personal Information is made>" << endl;
 		cout << "SSN: " << SSN << endl;
 		cout << "height: " << height << endl;
-		cout << "weight: " << weight << endl;
+		cout << "weight: " << weight << endl << endl;
 	}
 	~Person(){
 		delete[] grade;
 		grade = nullptr;
 		cout << "~Person() is called!" << endl;
+	}
+	Person& operator=(const Person& rhs){
+		if(this == &rhs) return *this;
+		height = rhs.height;
+		weight = rhs.weight;
+		
+		return *this;
 	}
 	void SetGrade(int _number){
 		grade = new int[_number];
@@ -113,6 +120,11 @@ int main(int argc, char* argv[]){
 	Person p1("127001-987002", 181.8, 82.1);
 	Person p2(p1);
 	cout << "p2.SSN, p2.height, p2.weight: " << p2.GetSSN() << ", " << p2.GetHeight() << ", " << p2.GetWeight() << endl << endl;
+	
+	Person p3("123456-789012", 160, 60);
+	Person p4("987654-321098", 170, 70);
+	p3 = p4;
+	cout << "p3.SSN: " << p3.GetSSN() << endl << "p3.height: " << p3.GetHeight() << endl << "p3.weight: " << p3.GetWeight() << endl << endl;
 	
 	return 0;
 }
