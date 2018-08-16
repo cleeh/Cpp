@@ -179,6 +179,9 @@ class People{
 	double height;
 	double weight;
 	public:
+	People(){
+		cout << "Call People()" << endl;
+	}
 	People(double _height, double _weight): height(_height), weight(_weight){
 		cout << "Call People()" << endl;
 	}
@@ -190,11 +193,32 @@ class Programmer: public People{
 	private:
 	int numOfLanguage;
 	public:
+	Programmer() : People(){
+		cout << "Call Programmer()" << endl;
+	}
 	Programmer(double _height, double _weight, int lang): People(_height, _weight), numOfLanguage(lang){
 		cout << "Call Programmer()" << endl;
 	}
 	~Programmer(){
 		cout << "Call ~Programmer()" << endl;
+	}
+};
+class Designer : public People{
+	public:
+	Designer(): People(){
+		cout << "Call Designer()" << endl;
+	}
+	~Designer(){
+		cout << "Call ~Designer()" << endl;
+	}
+};
+class Multi : public Programmer, public Designer{
+	public:
+	Multi() : Programmer(), Designer(){
+		cout << "Call Multi()" << endl;
+	}
+	~Multi(){
+		cout << "Call ~Multi()" << endl;
 	}
 };
 
@@ -240,6 +264,9 @@ int main(int argc, char* argv[]){
 	cout << Bank::roundDown(3.4) << endl << endl;
 	
 	Programmer pro1(183.4, 78.5, 3);
+	cout << endl;
+	Multi m1;
+	cout << endl;
 	
 	return 0;
 }
