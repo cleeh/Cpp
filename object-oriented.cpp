@@ -56,8 +56,8 @@ class Person{
 	double weight;
 	int* grade;
 	public:
-	Person() {}
-	Person(const string _SSN, double _height, double _weight):SSN(_SSN), height(_height), weight(_weight){
+	Person(const Person& src): SSN(src.SSN), height(src.height), weight(src.weight), grade(nullptr) {}
+	Person(const string _SSN, double _height, double _weight):SSN(_SSN), height(_height), weight(_weight), grade(nullptr){
 		cout << "<Personal Information is made>" << endl;
 		cout << "SSN: " << SSN << endl;
 		cout << "height: " << height << endl;
@@ -74,6 +74,9 @@ class Person{
 			grade[i] = i;
 			cout << "grade[" << i << "]: " << grade[i] << endl;
 		}
+	}
+	string GetSSN(){
+		return SSN;
 	}
 	void SetHeight(double height){
 		this->height = height;
@@ -106,6 +109,10 @@ int main(int argc, char* argv[]){
 	person.SetGrade(5);
 	person.SetHeight(170.2);
 	cout << "Result of SetHeight(170.2): " << person.GetHeight() << endl << endl;
+	
+	Person p1("127001-987002", 181.8, 82.1);
+	Person p2(p1);
+	cout << "p2.SSN, p2.height, p2.weight: " << p2.GetSSN() << ", " << p2.GetHeight() << ", " << p2.GetWeight() << endl << endl;
 	
 	return 0;
 }
