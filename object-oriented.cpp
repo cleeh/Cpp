@@ -106,11 +106,33 @@ class Copy{
 	double height;
 	double weight;
 	public:
+	Copy(const Copy& src): roomNum(src.roomNum), height(src.height), weight(src.weight){
+		room = new int[roomNum];
+		for(int i = 0; i < roomNum; i++)
+			room[i] = src.room[i];
+	}
 	Copy(int _roomNum, double _height, double _weight): roomNum(_roomNum), height(_height), weight(_weight){
 		room = new int[roomNum];
 	}
 	~Copy(){
 		delete[] room;
+		cout << "~Copy() is called" << endl;
+	}
+	Copy& operator=(const Copy& rhs){
+		if(this == &rhs)
+			return *this;
+		delete[] room;
+		room = nullptr;
+		
+		height = rhs.height;
+		weight = rhs.weight;
+		roomNum = rhs.roomNum;
+		
+		room = new int[roomNum];
+		for(int i = 0; i < roomNum; i++)
+			room[i] = rhs.room[i];
+		
+		return *this;
 	}
 };
 
@@ -141,10 +163,9 @@ int main(int argc, char* argv[]){
 	p3 = p4;
 	cout << "p3.SSN: " << p3.GetSSN() << endl << "p3.height: " << p3.GetHeight() << endl << "p3.weight: " << p3.GetWeight() << endl << endl;
 	
-	
 	Copy c1(3, 183.4, 78.5);
 	Copy c2(5, 175.6, 68.3);
-	c1 = c2; // Runtime Error: Shallow Copy Problem
+	c1 = c2;
 	
 	return 0;
 }
