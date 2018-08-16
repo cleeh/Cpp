@@ -174,6 +174,30 @@ void Bank::setBranchName(string _bName){
 	branchName = _bName;
 }
 
+class People{
+	private:
+	double height;
+	double weight;
+	public:
+	People(double _height, double _weight): height(_height), weight(_weight){
+		cout << "Call People()" << endl;
+	}
+	~People(){
+		cout << "Call ~People()" << endl;
+	}
+};
+class Programmer: public People{
+	private:
+	int numOfLanguage;
+	public:
+	Programmer(double _height, double _weight, int lang): People(_height, _weight), numOfLanguage(lang){
+		cout << "Call Programmer()" << endl;
+	}
+	~Programmer(){
+		cout << "Call ~Programmer()" << endl;
+	}
+};
+
 int main(int argc, char* argv[]){
 	Elephant e ={4, 4.96, 1.02};
 	e.wash();
@@ -214,6 +238,8 @@ int main(int argc, char* argv[]){
 	daeguBank.setBranchName("Daegu");
 	cout << daeguBank.getBranchName() << endl;
 	cout << Bank::roundDown(3.4) << endl << endl;
+	
+	Programmer pro1(183.4, 78.5, 3);
 	
 	return 0;
 }
