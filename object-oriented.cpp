@@ -188,6 +188,9 @@ class People{
 	~People(){
 		cout << "Call ~People()" << endl;
 	}
+	void doWork(){
+		cout << "[People] Working..." << endl;
+	}
 };
 class Programmer: public People{
 	private:
@@ -201,6 +204,9 @@ class Programmer: public People{
 	}
 	~Programmer(){
 		cout << "Call ~Programmer()" << endl;
+	}
+	void doWork(){
+		cout << "[Programmer] Programming...";
 	}
 };
 class Designer : public People{
@@ -267,6 +273,11 @@ int main(int argc, char* argv[]){
 	cout << endl;
 	Multi m1;
 	cout << endl;
+	People peo1;
+	
+	peo1.doWork();
+	pro1.doWork();
+//	m1.doWork(); // because of multi inheritance, two doWork() are called. so, Compiler says I don't know what are you calling.
 	
 	return 0;
 }
