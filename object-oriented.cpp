@@ -99,6 +99,21 @@ class Person{
 	}
 };
 
+class Copy{
+	private:
+	int* room;
+	int roomNum;
+	double height;
+	double weight;
+	public:
+	Copy(int _roomNum, double _height, double _weight): roomNum(_roomNum), height(_height), weight(_weight){
+		room = new int[roomNum];
+	}
+	~Copy(){
+		delete[] room;
+	}
+};
+
 int main(int argc, char* argv[]){
 	Elephant e ={4, 4.96, 1.02};
 	e.wash();
@@ -125,6 +140,11 @@ int main(int argc, char* argv[]){
 	Person p4("987654-321098", 170, 70);
 	p3 = p4;
 	cout << "p3.SSN: " << p3.GetSSN() << endl << "p3.height: " << p3.GetHeight() << endl << "p3.weight: " << p3.GetWeight() << endl << endl;
+	
+	
+	Copy c1(3, 183.4, 78.5);
+	Copy c2(5, 175.6, 68.3);
+	c1 = c2; // Runtime Error: Shallow Copy Problem
 	
 	return 0;
 }
