@@ -150,15 +150,29 @@ class Bank{
 	static double interestRate;
 	const Vault& vault;
 	int width, height;
-	
+	string branchName;
 	public:
 	static const int kMaxWidth = 300;
 	static const int kMaxHeight = 300;
 	
-	Bank(const Vault& _vault, int _width, int _height): vault(_vault), width(_width), height(_height){}
+	Bank(const Vault& _vault, int _width, int _height);
 	Bank(const Bank& src): vault(src.vault), width(src.width), height(src.height){}
+	
+	static int roundDown(double val);
+	string getBranchName() const;
+	void setBranchName(string _bName);
 };
 double Bank::interestRate = 3.5;
+Bank::Bank(const Vault& _vault, int _width = kMaxWidth, int _height = kMaxHeight): vault(_vault), width(_width), height(_height){}
+int Bank::roundDown(double val){
+	return static_cast<int>(val);
+}
+string Bank::getBranchName() const{
+	return branchName;
+}
+void Bank::setBranchName(string _bName){
+	branchName = _bName;
+}
 
 int main(int argc, char* argv[]){
 	Elephant e ={4, 4.96, 1.02};
@@ -192,7 +206,14 @@ int main(int argc, char* argv[]){
 	c1 = c2;
 	
 	Vault daeguVault(200000000);
+	Bank b1(daeguVault);
+	Bank b2(daeguVault, 50);
+	Bank b3(daeguVault, 50, 50);
+	
 	Bank daeguBank(daeguVault, 50, 50);
+	daeguBank.setBranchName("Daegu");
+	cout << daeguBank.getBranchName() << endl;
+	cout << Bank::roundDown(3.4) << endl << endl;
 	
 	return 0;
 }
