@@ -66,7 +66,7 @@ class Person{
 	~Person(){
 		delete[] grade;
 		grade = nullptr;
-		cout << "~Person() is called!" << endl;
+//		cout << "~Person() is called!" << endl;
 	}
 	Person& operator=(const Person& rhs){
 		if(this == &rhs) return *this;
@@ -116,7 +116,7 @@ class Copy{
 	}
 	~Copy(){
 		delete[] room;
-		cout << "~Copy() is called" << endl;
+//		cout << "~Copy() is called" << endl;
 	}
 	Copy& operator=(const Copy& rhs){
 		if(this == &rhs)
@@ -180,13 +180,13 @@ class People{
 	double weight;
 	public:
 	People(){
-		cout << "Call People()" << endl;
+//		cout << "Call People()" << endl;
 	}
 	People(double _height, double _weight): height(_height), weight(_weight){
-		cout << "Call People()" << endl;
+//		cout << "Call People()" << endl;
 	}
 	virtual ~People(){
-		cout << "Call ~People()" << endl;
+//		cout << "Call ~People()" << endl;
 	}
 	virtual void doWork(){
 		cout << "[People] Working..." << endl;
@@ -195,39 +195,57 @@ class People{
 		cout << "Sleep..." << endl;
 	}
 };
-class Programmer: public People{
+class Programmer: public virtual People{
 	private:
 	int numOfLanguage;
 	public:
 	Programmer() : People(){
-		cout << "Call Programmer()" << endl;
+//		cout << "Call Programmer()" << endl;
 	}
 	Programmer(double _height, double _weight, int lang): People(_height, _weight), numOfLanguage(lang){
 		cout << "Call Programmer()" << endl;
 	}
 	~Programmer(){
-		cout << "Call ~Programmer()" << endl;
+//		cout << "Call ~Programmer()" << endl;
 	}
 	void doWork(){
 		cout << "[Programmer] Programming..." << endl;
 	}
 };
-class Designer : public People{
+class Designer : public virtual People{
 	public:
 	Designer(): People(){
-		cout << "Call Designer()" << endl;
+//		cout << "Call Designer()" << endl;
 	}
 	~Designer(){
-		cout << "Call ~Designer()" << endl;
+//		cout << "Call ~Designer()" << endl;
 	}
 };
 class Multi : public Programmer, public Designer{
 	public:
 	Multi() : Programmer(), Designer(){
-		cout << "Call Multi()" << endl;
+//		cout << "Call Multi()" << endl;
 	}
 	~Multi(){
-		cout << "Call ~Multi()" << endl;
+//		cout << "Call ~Multi()" << endl;
+	}
+};
+
+class WorkHour{
+	private:
+	int workHour;
+	public:
+	WorkHour(int w) : workHour(w){}
+	void printWorkHour(){
+		cout << "WorkHour: " << workHour << endl;
+	}
+	WorkHour add (const WorkHour& work){
+		WorkHour wh(this->workHour + work.workHour);
+		return wh;
+	}
+	WorkHour operator+(const WorkHour& work){
+		WorkHour wh(this->workHour + work.workHour);
+		return wh;
 	}
 };
 
@@ -289,7 +307,19 @@ int main(int argc, char* argv[]){
 	cout << endl;
 	
 	Multi mul3;
-//	mul3.sleep(); // Compile Error: request for member ¡®sleep¡¯ is ambiguous
+	mul3.sleep();
+	cout << endl;
+	
+	WorkHour Aworker(2);
+	WorkHour Bworker(3);
+	WorkHour total = Aworker.add(Bworker); // 1
+	total.printWorkHour();
+	total = Aworker + Bworker; // 2
+	total.printWorkHour();
+	total = Aworker + 3; // 3
+	total.printWorkHour();
+//	total = 3 + Aworker; // Compile Error: No typecast or operator
+	cout << endl;
 	
 	return 0;
 }
