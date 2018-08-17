@@ -206,7 +206,7 @@ class Programmer: public People{
 		cout << "Call ~Programmer()" << endl;
 	}
 	void doWork(){
-		cout << "[Programmer] Programming...";
+		cout << "[Programmer] Programming..." << endl;
 	}
 };
 class Designer : public People{
@@ -278,6 +278,12 @@ int main(int argc, char* argv[]){
 	peo1.doWork();
 	pro1.doWork();
 //	m1.doWork(); // because of multi inheritance, two doWork() are called. so, Compiler says I don't know what are you calling.
+	cout << endl;
+	
+	Programmer pro2;
+	People &peo2 = pro2;
+	peo2.doWork(); // [People] Working...
+	cout << endl;
 	
 	return 0;
 }
