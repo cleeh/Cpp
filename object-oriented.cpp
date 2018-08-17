@@ -235,7 +235,9 @@ class WorkHour{
 	private:
 	int workHour;
 	public:
-	WorkHour(int w) : workHour(w){}
+	WorkHour(int w) : workHour(w){
+		cout << "Call WorkHour(" << w << ")" << endl;
+	}
 	void printWorkHour(){
 		cout << "WorkHour: " << workHour << endl;
 	}
@@ -245,9 +247,16 @@ class WorkHour{
 	}
 	WorkHour operator+(const WorkHour& work){
 		WorkHour wh(this->workHour + work.workHour);
+		cout << "operator+(work)" << endl;
 		return wh;
 	}
+	friend WorkHour operator+(const WorkHour& work1, const WorkHour& work2);
 };
+WorkHour operator+(const WorkHour& work1, const WorkHour& work2){
+	WorkHour work(work1.workHour + work2.workHour);
+	cout << "operator+(work1, work2)" << endl;
+	return work;
+}
 
 int main(int argc, char* argv[]){
 	Elephant e ={4, 4.96, 1.02};
@@ -316,9 +325,13 @@ int main(int argc, char* argv[]){
 	total.printWorkHour();
 	total = Aworker + Bworker; // 2
 	total.printWorkHour();
-	total = Aworker + 3; // 3
-	total.printWorkHour();
-//	total = 3 + Aworker; // Compile Error: No typecast or operator
+	cout << endl;
+	
+	WorkHour total1 = Aworker + 3; // operator+(work)
+	WorkHour total2 = 3 + Aworker; // operator+(work1, work2)
+	total1.printWorkHour();
+	total2.printWorkHour();
+	
 	cout << endl;
 	
 	return 0;
