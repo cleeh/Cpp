@@ -185,7 +185,7 @@ class People{
 	People(double _height, double _weight): height(_height), weight(_weight){
 		cout << "Call People()" << endl;
 	}
-	~People(){
+	virtual ~People(){
 		cout << "Call ~People()" << endl;
 	}
 	virtual void doWork(){
