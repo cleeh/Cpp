@@ -191,6 +191,9 @@ class People{
 	virtual void doWork(){
 		cout << "[People] Working..." << endl;
 	}
+	void sleep(){
+		cout << "Sleep..." << endl;
+	}
 };
 class Programmer: public People{
 	private:
@@ -284,6 +287,9 @@ int main(int argc, char* argv[]){
 	People &peo2 = pro2;
 	peo2.doWork(); // [Programmer] Programming...
 	cout << endl;
+	
+	Multi mul3;
+//	mul3.sleep(); // Compile Error: request for member ¡®sleep¡¯ is ambiguous
 	
 	return 0;
 }
