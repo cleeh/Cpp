@@ -188,7 +188,7 @@ class People{
 	~People(){
 		cout << "Call ~People()" << endl;
 	}
-	void doWork(){
+	virtual void doWork(){
 		cout << "[People] Working..." << endl;
 	}
 };
@@ -282,7 +282,7 @@ int main(int argc, char* argv[]){
 	
 	Programmer pro2;
 	People &peo2 = pro2;
-	peo2.doWork(); // [People] Working...
+	peo2.doWork(); // [Programmer] Programming...
 	cout << endl;
 	
 	return 0;
