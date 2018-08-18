@@ -15,10 +15,10 @@ namespace Records{
 		
 		void displayAll() const;
 		void displayCurrent() const;
-		void displaryFormer() const;
+		void displayFormer() const;
 		
 		protected:
 		std::vector<Employee> mEmployees;
 		int mNextEmployeeNumber;
-	}
+	};
 }
