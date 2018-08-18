@@ -57,4 +57,11 @@ namespace Records{
 				iter->display();
 		}
 	}
+	
+	void Database::displayFormer() const{
+		for(auto iter = mEmployees.begin(); iter != mEmployees.end(); ++iter){
+			if(!(iter->getIsHired()))
+				iter->display();
+		}
+	}
 }
