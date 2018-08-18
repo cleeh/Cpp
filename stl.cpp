@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <list>
 
 int main(){
 	std::vector<int> vec;
@@ -44,6 +45,29 @@ int main(){
 		nSum += (*iter);
 	}
 	std::cout << "nSum: " << nSum << std::endl << std::endl;
+	
+	std::list<int> lst;
+	lst.push_back(5); // 5
+	lst.push_back(10); // 5 -> 10
+	lst.push_front(100); // 100 -> 5 -> 10
+	auto iter = lst.begin(); // iter -> 100 -> 5 -> 10
+	iter++; // 100 -> iter -> 5 -> 10
+	auto ater = lst.insert(iter, 200); // 100 -> ater -> 200 -> iter -> 5 -> 10
+	lst.insert(ater, 300); // 100 -> 300 -> ater -> 200 -> iter -> 5 -> 10
+	lst.insert(iter, 400); // 100 -> 300 -> ater -> 200 -> 400 -> iter -> 5 -> 10
+	for(auto iterator = lst.begin(); iterator != lst.end(); iterator++){
+		std::cout << (*iterator) << '\t';
+	}
+	std::cout << std::endl;
+	
+	std::list<int> lstB;
+	lstB.push_back(20); // 20
+	lstB.push_back(30); // 20 -> 30
+	lst.insert(iter, lstB.begin(), lstB.end()); // 100 -> 300 -> ater -> 200 -> 400 -> 20 -> 30 -> iter -> 5 -> 10
+	for(auto iterator = lst.begin(); iterator != lst.end(); iterator++){
+		std::cout << (*iterator) << '\t';
+	}
+	std::cout << std::endl;
 	
 	return 0;
 }
