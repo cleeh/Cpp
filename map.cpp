@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-int other_main10(){
+int main(){
 	std::multimap<int, double> M{{8, 32.5}, {8, 1.1}};
 	M.insert(std::make_pair<int, int>(5, 105.5));
 	M.insert(std::pair<int, int>(5, 14.9));
