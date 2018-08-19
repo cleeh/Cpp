@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <deque>
 
 template<typename T>
 void print_vector(std::vector<T> vec){
@@ -12,10 +13,17 @@ void print_vector(std::vector<T> vec){
 
 int main(){
 	std::vector<int> V{100, 25, 40, 35, 5};
-	
-	print_vector<int>(V);
 	std::sort(V.begin(), V.end(), std::less<int>());
-	print_vector<int>(V);
+	
+	std::deque<int> D{13, 78, 57, 24, 69};
+	std::sort(D.begin(), D.end(), std::less<int>());
+	
+	std::vector<int> VR;
+	VR.resize(V.size() + D.size());
+	
+	auto isLess = [](int a, int b){ return a < b; };
+	std::merge(V.begin(), V.end(), D.begin(), D.end(), VR.begin(), isLess);
+	print_vector<int>(VR);
 	
 	return 0;
 }
