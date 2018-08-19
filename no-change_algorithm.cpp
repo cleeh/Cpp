@@ -3,7 +3,7 @@
 #include <algorithm>
 
 int main(){
-	std::vector<int> V{10, 20, 40, 30, 50};
+	std::vector<int> V{10, 20, 40, 30, 50, 55, 60, 75, 100};
 	
 	auto iter30 = std::find(V.rbegin(), V.rend(), 30);
 	auto iter25 = std::find(V.begin(), V.end(), 25);
@@ -27,6 +27,15 @@ int main(){
 		std::cout << "V.size(): " << V.size() << std::endl;
 		V.erase(iterR, V.end());
 		std::cout << "V.size(): " << V.size() << std::endl;
+	}
+	std::cout << std::endl;
+	
+	auto isOdd = [](int n) {return n % 2 == 1;};
+	auto iterRI = std::remove_if(V.begin(), V.end(), isOdd);
+	if(iterRI != V.end()){
+		std::cout << "After remove_if(): " << V.size() << std::endl;
+		V.erase(iterRI, V.end());
+		std::cout << "After erase(): " << V.size() << std::endl;
 	}
 	
 	return 0;
