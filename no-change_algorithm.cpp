@@ -2,6 +2,14 @@
 #include <vector>
 #include <algorithm>
 
+template<typename T>
+void print_vector(std::vector<T> vec){
+	for(auto iter = vec.begin(); iter != vec.end(); iter++){
+		std::cout << (*iter) << '\t';
+	}
+	std::cout << std::endl;
+}
+
 int main(){
 	std::vector<int> V{10, 20, 40, 30, 50, 55, 60, 75, 100};
 	
@@ -22,11 +30,14 @@ int main(){
 	std::cout << std::endl;
 	
 	std::cout << "V.size(): " << V.size() << std::endl;
+	print_vector<int>(V); // 10 20 40 30 50 55 60 75 100
 	auto iterR = std::remove(V.begin(), V.end(), 40);
 	if(iterR != V.end()){
 		std::cout << "V.size(): " << V.size() << std::endl;
+		print_vector<int>(V); // 10 20 30 50 55 60 75 100 100
 		V.erase(iterR, V.end());
 		std::cout << "V.size(): " << V.size() << std::endl;
+		print_vector<int>(V); // 10 20 30 50 55 60 75 100
 	}
 	std::cout << std::endl;
 	
@@ -34,8 +45,10 @@ int main(){
 	auto iterRI = std::remove_if(V.begin(), V.end(), isOdd);
 	if(iterRI != V.end()){
 		std::cout << "After remove_if(): " << V.size() << std::endl;
+		print_vector<int>(V); // 10 20 30 50 60 100 75 100
 		V.erase(iterRI, V.end());
 		std::cout << "After erase(): " << V.size() << std::endl;
+		print_vector<int>(V); // 10 20 30 50 60 100
 	}
 	
 	return 0;
